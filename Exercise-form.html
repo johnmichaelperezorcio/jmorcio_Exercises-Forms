@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercise on Forms</title>
+        <link rel="icon" type="image/png" href="forms.png">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <style>
+                .message-row {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 10px;
+                    margin-top: 5px;
+
+                } textarea {
+                width: 100%;
+                height: 80px;
+                padding-top: 10px;
+                box-sizing: border-box;
+
+                } .submit-btn {
+                    padding: 8px 12px;
+                    background-color: #007bff;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    height: fit-content;
+
+                } form { 
+                    border: 1px solid gray; 
+                    padding: 15px;
+                } .error {
+                    border: 2px solid red;
+                }
+
+        </style>
+    </head>
+<!--Basic Form Structure-->
+    <body>
+        <form action="submit.php" method="POST"> 
+            <label for="username">Username:</label> 
+            <input type="text" id="username" name="username" required> 
+            
+            <label for="password">Password:</label> 
+            <input type="password" id="password" name="password" required> 
+            
+            <button type="submit">Login</button> 
+        </form> 
+
+<!--Sample Contact Form-->
+        <form action="#" method="POST"> 
+            <h2>Contact Us</h2> 
+            <label for="name">Name:</label> 
+            <input type="text" id="name" name="name" placeholder="Your name" required> 
+            <label for="email">Email:</label> 
+            <input type="email" id="email" name="email" placeholder="Your email" required> <br>
+            <label for="message">Message:</label> <br>
+            <div class="message-row">
+                <textarea name="message" rows="4" required></textarea> 
+                <button type="submit" class="submit-btn">Send</button> <br><br>
+            </div>
+        </form>
+
+<!--1. Basic Login Form(HTML Only)-->
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username1" name="username" required> <br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password1" name="password" required> <br><br>
+
+            <button type="submit">Login</button>
+        </form>
+
+<!--2. Add Email Input & Placeholder-->
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="email1" name="email" placeholder="Enter your email"/>
+
+<!--3. Add Radio Buttons & Checkboxes-->
+            <p>Choose your role:</p>
+            <input type="radio" id="student" name="role" value="student">
+            <label for="student">Student</label>
+            <input type="radio" id="teacher" name="role" value="teacher">
+            <label for="teacher">Teacher</label>
+
+            <p>Select your interest:</p>
+            <input type="checkbox" id="html" name="interest" value="HTML">
+            <label for="html">HTML</label>
+            <input type="checkbox" id="css" name="interest" value="CSS">
+            <label for="css">CSS</label> <br><br>
+
+<!--4. Add a Dropdown (Select Menu)-->
+            <label for="country">Country</label>
+            <select name="country" id="country">
+                <option value="ph">Philippines</option>
+                <option value="us">United States</option>
+                <option value="jp">Japan</option>
+            </select> <br><br>
+
+<!--5. Add a Textarea-->
+            <label for="message">Your message</label><br>
+            <textarea name="message" id="message" rows="4" cols="40"></textarea>
+
+<!--6. Form Validation with HTML Attributes-->
+            <input type="text" name="username" required minlength="3" maxlength="10" placeholder="Username">
+            <input type="email" name="email" placeholder="Email" required>
+        </form>
+
+<!--7. Add JS Alert on Submit (Native JavaScript)-->
+        <form id="loginForm">
+            <input type="text" id="username2" placeholder="Username" required>
+            <button type="submit">Submit</button>
+
+<!--8. Show Live Character Count (Native JavaScript)-->
+            <textarea id="bio" maxlength="100"></textarea>
+            <p id="count">0/100</p>
+
+<!--9. Toggle Password Visibility (Native JavaScript)-->
+            <input type="password" id="pwd" placeholder="Password">
+            <button type="button" onclick="togglePwd()">Show/Hide</button>
+        </form>
+
+<!--10. jQuery Version of Submit Alert-->
+        <form id="myForm">
+            <input type="text" required>
+            <button type="submit">Submit</button> <br>
+
+<!--11. jQuery Show/Hide Password-->
+            <input type="password" id="pwd1" placeholder="Password">
+            <button id="toggle">Show/Hide</button>
+
+<!--12. jQuery Live Character Count-->
+            <textarea id="bio1" maxlength="100" placeholder="Your Message"></textarea>
+            <p id="count1">0/100</p>
+        </form>
+
+<!--13. Validate Empty Field with jQuery-->
+        <form id="login">
+            <input type="text" id="user" placeholder="Username"><br>
+            <input type="password" id="pass" placeholder="Password"><br>
+            <button type="submit">Login</button>
+        </form>
+
+<!--14. Add CSS Highlight for Errors (with jQuery)-->
+        <form id="formCheck">
+            <input type="text" id="name1" placeholder="Name">
+            <button type="submit">Submit</button>
+        </form>
+
+        <script>
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                alert("Form submitted!");
+            });
+
+            $("#myForm").submit(function(event) {
+                event.preventDefault();
+                alert("Form submitted with jQuery!");
+            });
+
+            const bio = document.getElementById("bio");
+            const count = document.getElementById("count");
+
+            bio.addEventListener("input", function() {
+                count.textContent = bio.value.length + "/100";
+            });
+
+            function togglePwd() {
+                const pwd = document.getElementById("pwd");
+                pwd.type = pwd.type === "password" ? "text" : "password";
+            };
+
+            $("#toggle").click(function() {
+                let pwd1 = $("#pwd1");
+                pwd.attr("type", pwd.attr("type") === "password" ? "text" : "password");
+            });
+
+            $("#bio1").on("input", function() {
+                $("#count1").text($(this).val().length + "/100");
+            });
+
+            $("#login").submit(function(e) {
+                e.preventDefault();
+                if($("#user").val() === "" || $("#pass").val() === "") {
+                    alert("Please fill in all fields");
+                } else {
+                    alert("Login successfully!");
+                }
+            });
+
+            $("#formCheck").submit(function(e) {
+                e.preventDefault();
+                if($("#name1").val() === "") {
+                    $("#name1").addClass("error");
+                } else {
+                    $("#name1").removeClass("error");
+                    alert("Form submitted!");
+                }
+            });
+        </script>
+    </body>
+</html>
