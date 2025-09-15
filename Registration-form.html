@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="icon" type="image/png" href="register.png">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <style>
+
+            body {
+                background-image: url("background-pic.png");
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+            }
+            .registration-container {
+                font-family: Arial;
+                display: flex;
+                justify-content: center;
+                padding: 40px;
+            }
+
+            .registration-form {
+            display: flex;
+            gap: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+            }
+
+            .form-left, .form-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            }
+
+            label {
+            margin-top: 10px;
+            font-weight: 300;
+            }
+
+            input {
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            }
+
+            button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+
+            .interest {
+                padding-left: 120px;
+            } 
+            textarea {
+                width: 100%;
+                height: 80px;
+                padding-top: 10px;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="registration-container">
+            <form class="registration-form">
+                <div class="form-left">
+                    <h2>Personal Info</h2>
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="fname" required>
+
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lname" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+
+                    <label for="phone-number">Phone Number</label>
+                    <input type="tel" id="tel-number" name="tel-number" placeholder="0912-345-6789" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"required>
+
+    
+                    <p>Choose your role:</p>
+                    <div>
+                        <center>
+                        <input type="radio" id="artist" name="role" value="artist">
+                        <label for="artist">Artist</label>
+                        <input type="radio" id="client" name="role" value="client">
+                        <label for="client">Client</label>
+                        </center>
+                    </div>
+
+                    <p>Select your interest:</p>
+                    <div class="interest">
+                        <input type="checkbox" id="anime" name="interest" value="anime">
+                        <label for="anime">Anime Art</label> <br>
+                        <input type="checkbox" id="comics" name="interest" value="comics">
+                        <label for="comics">Comics</label> <br>
+                        <input type="checkbox" id="realistic-art" name="interest" value="realistic-art">
+                        <label for="realistic-art">Realistic Art</label> <br><br>
+                        </div>
+
+                        <div>
+                            <label for="artist">Favorite Artist: </label>
+                        <select name="fav-artist" id="fav-artist">
+                            <option value="orcio">jann.emm</option>
+                            <option value="ara">elvz</option>
+                            <option value="kate">katelyn</option>
+                        </select> <br>
+                        </div>
+
+                        <p>Profile Bio:</p>
+                        <div>
+                            <textarea id="bio" maxlength="100" placeholder=" Enter your Bio"></textarea>
+                            <p id="count">0/100</p>
+                        </div>
+                    </div>
+
+                <div class="form-right">
+                    <h2>Account Details</h2>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="confirm">Confirm Password</label>
+                    <input type="password" id="confirm" name="confirm" required>
+
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            $("#bio").on("input", function() {
+                $("#count").text($(this).val().length + "/100");
+            });
+        </script>
+
+
+    </body>
+</html>
