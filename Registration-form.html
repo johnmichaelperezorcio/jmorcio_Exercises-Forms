@@ -156,7 +156,7 @@
 
             $(".registration-form").submit(function(e) {
                 e.preventDefault();
-                if($("#username").val() === "" || $("#password").val() === "" || $("#confirm").val() === "" )  {
+                if($("#username").val() === "" || $("#password").val() === "" || $("#confirm").val() === "" || $("#fname").val() === "" || $("#lname").val() === "" || $("#email").val() === "" || $("#tel-number").val() === "" || $("#address").val() === "")  {
                     alert("Please fill in all fields.");
                 } else {
                     alert("Login successfully!");
@@ -166,3 +166,4 @@
     </body>
 
 </html>
+
